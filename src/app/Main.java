@@ -38,8 +38,9 @@ public class Main {
                     break;
 
                 case 3:
-                    int y = -1;
                     agenda.showContacts();
+                    System.out.println("Digite o número do contato a ser removido:");
+                    int y = scanner.nextInt();
                     agenda.removeContact(y);
                     break;
 
