@@ -23,16 +23,16 @@ public class Agenda {
     public void showContacts(){
         int x = 0;
 
-        if(lista.isEmpty()){
-            System.out.println("você não tem nenhum contato.");
-        } else {
-            for(Contato contato : lista) {
-                System.out.println();
-                System.out.print(x + " - ");
-                System.out.print(contato);
-                x++;
-            }
+        for(Contato contato : lista) {
             System.out.println();
+            System.out.print(x + " - ");
+            System.out.print(contato);
+            x++;
         }
+        System.out.println();
+    }
+
+    public boolean hasContacts(){
+        return !lista.isEmpty();
     }
 }

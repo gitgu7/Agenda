@@ -26,28 +26,30 @@ public class Main {
                     System.out.println("Digite o nome do contato: ");
                     contato.setNome(scanner.nextLine());
                     System.out.println("Digite o telefone do contato: ");
-                    contato.setTelefone(scanner.nextLong());
-                    scanner.nextLine();
+                    contato.setTelefone(scanner.nextLine());
                     System.out.println("Digite o email do contato: ");
                     contato.setEmail(scanner.nextLine());
                     agenda.addContact(contato);
                     break;
 
                 case 2:
-                    agenda.showContacts();
+                    if(agenda.hasContacts()){
+                        agenda.showContacts();
+                    }
                     break;
 
                 case 3:
-                    agenda.showContacts();
-                    System.out.println("Digite o número do contato a ser removido:");
-                    int y = scanner.nextInt();
-                    agenda.removeContact(y);
+                    if(agenda.hasContacts()){
+                        agenda.showContacts();
+                        System.out.println("Digite o número do contato a ser removido:");
+                        int y = scanner.nextInt();
+                        agenda.removeContact(y);
+                    }
                     break;
 
                 case 0:
                     option = 0;
             }
-
         }
     scanner.close();
     }

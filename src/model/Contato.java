@@ -2,7 +2,7 @@ package model;
 
 public class Contato {
     private String nome;
-    private long telefone;
+    private String telefone;
     private String email;
 
     public Contato() {}
@@ -14,10 +14,10 @@ public class Contato {
         this.nome = nome;
     }
 
-    public long getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
-    public void setTelefone(long telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
