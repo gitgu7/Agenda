@@ -17,8 +17,7 @@ public class Main {
             System.out.println("3 - Excluir Contato");
             System.out.println("0 - Sair");
 
-            option = scanner.nextInt();
-            scanner.nextLine();
+            option = inputValidation(scanner);
 
             switch (option){
                 case 1:
@@ -42,7 +41,7 @@ public class Main {
                     if(agenda.hasContacts()){
                         agenda.showContacts();
                         System.out.println("Digite o número do contato a ser removido:");
-                        int y = scanner.nextInt();
+                        int y = inputValidation(scanner);
                         agenda.removeContact(y);
                     }
                     break;
@@ -52,5 +51,15 @@ public class Main {
             }
         }
     scanner.close();
+    }
+
+    private static int inputValidation(Scanner scanner){
+        try{
+            int x = Integer.parseInt(scanner.nextLine());
+            return x;
+        } catch(NumberFormatException e){
+            System.out.println("Valor inválido, tente novamente!");
+            return -1;
+        }
     }
 }
