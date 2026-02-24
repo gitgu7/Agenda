@@ -3,6 +3,7 @@ package app;
 import model.Contato;
 import service.Agenda;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -34,23 +35,27 @@ public class Main {
 
                 case 2:
                     if(agenda.hasContacts()){
-                        agenda.showContacts();
+                        mostrarContatos(agenda);
                     }
                     break;
 
                 case 3:
                     if(agenda.hasContacts()){
-                        agenda.showContacts();
+                        mostrarContatos(agenda);
                         System.out.println("Digite o número do contato a ser removido:");
-                        int y = inputValidation(scanner);
-                        agenda.removeContact(y);
+                        int indiceRemocao = inputValidation(scanner);
+                        if(agenda.removeContact(indiceRemocao)){
+                            System.out.println("Contato removido com sucesso!");
+                        } else{
+                            System.out.println("Índice inválido!");
+                        }
                     }
                     break;
 
                 case 4:
                     if(agenda.hasContacts()){
-                        agenda.showContacts();
-                        System.out.println("Digite o indice do contato a ser removido:");
+                        mostrarContatos(agenda);
+                        System.out.println("Digite o indice do contato a ser editado:");
                         int indice = inputValidation(scanner);
                         System.out.println("Digite o novo nome do contato: ");
                         String novoNome = scanner.nextLine();
@@ -58,12 +63,16 @@ public class Main {
                         String novoTelefone = scanner.nextLine();
                         System.out.println("Digite o novo email do contato: ");
                         String novoEmail = scanner.nextLine();
-                        agenda.editContact(indice, novoNome, novoTelefone, novoEmail);
+                        if (agenda.editContact(indice, novoNome, novoTelefone, novoEmail)){
+                            System.out.println("Contato editado com sucesso!");
+                        } else {
+                            System.out.println("Índice inválido");
+                        }
                     }
                     break;
 
                 case 0:
-                    option = 0;
+                    break;
             }
         }
     scanner.close();
@@ -71,12 +80,20 @@ public class Main {
 
     private static int inputValidation(Scanner scanner){
         try{
-            int x = Integer.parseInt(scanner.nextLine());
-            return x;
+            return Integer.parseInt(scanner.nextLine());
         } catch(NumberFormatException e){
             System.out.println("Valor inválido, tente novamente!");
-            System.out.println("");
+            System.out.println();
             return -1;
         }
+    }
+
+    private static void mostrarContatos(Agenda agenda) {
+        List<Contato> contatos = agenda.getContacts();
+
+        for (int i = 0; i < contatos.size(); i++) {
+            System.out.println(i + " - " + contatos.get(i));
+        }
+        System.out.println();
     }
 }
