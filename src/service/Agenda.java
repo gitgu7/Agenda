@@ -12,7 +12,7 @@ public class Agenda {
     }
 
     public void removeContact(int y){
-        if(!lista.isEmpty() && y >= 0 && y < lista.size()){
+        if(y >= 0 && y < lista.size()){
             lista.remove(y);
             System.out.println("Contato removido com sucesso!");
         } else {
@@ -30,6 +30,19 @@ public class Agenda {
             x++;
         }
         System.out.println();
+        System.out.println();
+    }
+
+    public void editContact(int indice, String nome, String telefone, String email){
+        if(indice >= 0 && indice < lista.size()){
+            Contato contato = lista.get(indice);
+            contato.setNome(nome);
+            contato.setTelefone(telefone);
+            contato.setEmail(email);
+            System.out.println("Contato editado com sucesso!");
+        } else {
+            System.out.println("Índice inválido!");
+        }
     }
 
     public boolean hasContacts(){

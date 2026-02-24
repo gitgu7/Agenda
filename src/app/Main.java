@@ -15,6 +15,7 @@ public class Main {
             System.out.println("1 - Adicionar Contato");
             System.out.println("2 - Listar Contatos");
             System.out.println("3 - Excluir Contato");
+            System.out.println("4 - Editar Contato");
             System.out.println("0 - Sair");
 
             option = inputValidation(scanner);
@@ -46,6 +47,21 @@ public class Main {
                     }
                     break;
 
+                case 4:
+                    if(agenda.hasContacts()){
+                        agenda.showContacts();
+                        System.out.println("Digite o indice do contato a ser removido:");
+                        int indice = inputValidation(scanner);
+                        System.out.println("Digite o novo nome do contato: ");
+                        String novoNome = scanner.nextLine();
+                        System.out.println("Digite o novo telefone do contato: ");
+                        String novoTelefone = scanner.nextLine();
+                        System.out.println("Digite o novo email do contato: ");
+                        String novoEmail = scanner.nextLine();
+                        agenda.editContact(indice, novoNome, novoTelefone, novoEmail);
+                    }
+                    break;
+
                 case 0:
                     option = 0;
             }
@@ -59,6 +75,7 @@ public class Main {
             return x;
         } catch(NumberFormatException e){
             System.out.println("Valor inválido, tente novamente!");
+            System.out.println("");
             return -1;
         }
     }
