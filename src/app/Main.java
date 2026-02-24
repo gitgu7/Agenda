@@ -21,13 +21,13 @@ public class Main {
 
             switch (option){
                 case 1:
-                    Contato contato = new Contato();
                     System.out.println("Digite o nome do contato: ");
-                    contato.setNome(scanner.nextLine());
+                    String nome = scanner.nextLine();
                     System.out.println("Digite o telefone do contato: ");
-                    contato.setTelefone(scanner.nextLine());
+                    String telefone = scanner.nextLine();
                     System.out.println("Digite o email do contato: ");
-                    contato.setEmail(scanner.nextLine());
+                    String email = scanner.nextLine();
+                    Contato contato = new Contato(nome, telefone, email);
                     agenda.addContact(contato);
                     break;
 
